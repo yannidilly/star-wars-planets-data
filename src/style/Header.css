@@ -1,9 +1,10 @@
 .page-header {
   background-image: url('https://wallpaperaccess.com/full/1801911.jpg');
-  background-position: top;
+  background-position: 50% 40%;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
-  height: 40rem;
+  height: 25rem;
   justify-content: center;
 }
 
