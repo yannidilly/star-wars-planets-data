@@ -47,3 +47,8 @@ th, td {
 .planet-url {
   font-size: 2px;
 }
+
+.filter-section {
+  background-color: gray;
+  height: 80px;
+}
