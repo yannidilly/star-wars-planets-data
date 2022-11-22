@@ -1,0 +1,21 @@
+.table-loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 35px;
+}
+
+.table-loading::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 10px solid #dddddd;
+  border-top-color: #009579;
+  border-radius: 50%;
+  animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

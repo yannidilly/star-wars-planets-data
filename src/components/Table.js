@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import PlanetsDataContext from '../context/PlanetsDataContext';
 import fetchPlanets from '../services/fetchPlanets';
+import '../style/Table.css';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,17 +21,17 @@ function Table() {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <>
+    <div>
       {
         (isLoading)
-          ? <p>Carregando...</p>
+          ? <div className="table-loading" />
           : <h2>Tabela</h2>
       }
-      <p>erro de lint</p>
-    </>
+    </div>
   );
 }
 
