@@ -1,0 +1,15 @@
+.page-header {
+  background-image: url('https://wallpaperaccess.com/full/1801911.jpg');
+  background-position: top;
+  display: flex;
+  flex-direction: column;
+  height: 40rem;
+  justify-content: center;
+}
+
+.page-title {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
+  text-align: center;
+}
