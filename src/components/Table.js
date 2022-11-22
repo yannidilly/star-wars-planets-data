@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import PlanetsDataContext from '../context/PlanetsDataContext';
 import fetchPlanets from '../services/fetchPlanets';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(false);
+  const planetsData = useContext(PlanetsDataContext);
 
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const planetsData = await fetchPlanets();
-      console.log(planetsData);
+      const fetchPlanetsData = await fetchPlanets();
+      planetsData.setPlanetsData(fetchPlanetsData);
     } catch (error) {
       console.log(error);
     } finally {
