@@ -28,16 +28,20 @@
   justify-content: center;
 }
 
-th {
-  border: 1px solid red;
+table {
+  border-collapse: collapse;
+  margin: 5px;
 }
 
-td {
-  border: 1px solid green;
+th, td {
+  border-bottom: 2px solid #8c8c8c;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-align: center;
 }
 
 .film-link, .film-created, .film-edited {
-  font-size: 9px;
+  font-size: 8px;
 }
 
 .planet-url {
