@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PlanetsDataContext from './context/PlanetsDataContext';
 import Header from './components/Header';
 import Table from './components/Table';
