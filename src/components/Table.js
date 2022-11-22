@@ -6,8 +6,6 @@ import '../style/Table.css';
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
   const planetsDataObj = useContext(PlanetsDataContext);
-  console.log(isLoading);
-  console.log(planetsDataObj);
 
   const planetsDataFormat = (data) => {
     const localData = data;
