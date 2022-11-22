@@ -4,18 +4,42 @@
   padding-top: 35px;
 }
 
-.table-loading::after {
-  content: "";
-  width: 40px;
-  height: 40px;
-  border: 10px solid #dddddd;
-  border-top-color: #009579;
-  border-radius: 50%;
+.table-loading:after {
   animation: loading 2s ease-in-out infinite;
+  border: 10px solid #ddd;
+  border-radius: 50%;
+  border-top-color: #009579;
+  content: '';
+  height: 40px;
+  width: 40px;
 }
 
 @keyframes loading {
+
   to {
     transform: rotate(1turn);
   }
+
+}
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+th {
+  border: 1px solid red;
+}
+
+td {
+  border: 1px solid green;
+}
+
+.film-link, .film-created, .film-edited {
+  font-size: 9px;
+}
+
+.planet-url {
+  font-size: 2px;
 }
