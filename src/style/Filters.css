@@ -1,0 +1,46 @@
+.filters-section {
+  background-color: gray;
+}
+
+.name-filter-div {
+  align-items: center;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  position: relative;
+}
+
+.name-filter-label {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  position: absolute;
+  transition: top 200ms ease-in , left 200ms ease-in font-size 200ms ease-in;
+}
+
+.name-filter-input {
+  background: none;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  height: 30px;
+  outline: none;
+  position: absolute;
+  text-align: center;
+  transition: all 160ms ease-in;
+  width: 300px;
+}
+
+/* .name-filter-input:focus ~ .name-filter-label, .name-filter-input:not( :placeholder-shown ).name-filter-input:not( :focus ) ~ .name-filter-label {
+  background-color: gray;
+  font-size: 16px;
+  padding: 0 10px;
+  top: 32%;
+} */
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
