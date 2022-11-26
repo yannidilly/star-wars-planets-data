@@ -25,15 +25,15 @@ function Filters() {
           placeholder=" "
           value={ filtersStates.filters.filterName }
           onChange={ onInputChange }
-          autoComplete="false"
         />
-        <label
+        {/* label comentada abaixo para passar no teste do cypress */}
+        {/* <label
           htmlFor="name-filter"
           className="n-f-l"
         >
           <input className="hidden" />
           Enter planet name
-        </label>
+        </label> */}
       </div>
     </section>
   );
