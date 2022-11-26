@@ -2,7 +2,8 @@
   background-color: gray;
 }
 
-.name-filter-div {
+.n-f-d {
+  /* name-filter-div */
   align-items: center;
   display: flex;
   height: 150px;
@@ -10,7 +11,8 @@
   position: relative;
 }
 
-.name-filter-label {
+.n-f-l {
+  /* name-filter-label */
   align-items: center;
   display: flex;
   font-size: 18px;
@@ -19,7 +21,8 @@
   transition: top 200ms ease-in , left 200ms ease-in font-size 200ms ease-in;
 }
 
-.name-filter-input {
+.n-f-i {
+  /* name-filter-input */
   background: none;
   border: 2px solid black;
   border-radius: 5px;
@@ -33,12 +36,13 @@
   width: 300px;
 }
 
-/* .name-filter-input:focus ~ .name-filter-label, .name-filter-input:not( :placeholder-shown ).name-filter-input:not( :focus ) ~ .name-filter-label {
+.n-f-i:focus ~ .n-f-l, .n-f-i:not( :placeholder-shown ).n-f-i:not( :focus ) ~ .n-f-l {
+  /* alteração de nomes da classe para funcionar o ESlint */
   background-color: gray;
   font-size: 16px;
   padding: 0 10px;
   top: 32%;
-} */
+}
 
 .hidden {
   display: none;

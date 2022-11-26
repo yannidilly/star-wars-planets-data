@@ -4,18 +4,18 @@ function Filters() {
   return (
     <section className="filters-section">
       <div
-        className="name-filter-div"
+        className="n-f-d"
       >
         <input
           data-testid="name-filter"
           id="name-filter"
           type="text"
-          className="name-filter-input"
+          className="n-f-i"
           placeholder=" "
         />
         <label
           htmlFor="name-filter"
-          className="name-filter-label"
+          className="n-f-l"
         >
           <input className="hidden" />
           Enter planet name
