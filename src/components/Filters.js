@@ -23,8 +23,9 @@ function Filters() {
           type="text"
           className="n-f-i"
           placeholder=" "
-          value={ filtersStates.filterName }
+          value={ filtersStates.filters.filterName }
           onChange={ onInputChange }
+          autoComplete="false"
         />
         <label
           htmlFor="name-filter"
