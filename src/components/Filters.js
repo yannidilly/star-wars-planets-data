@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import FiltersContext from '../context/FiltersContext';
 import '../style/Filters.css';
 
 function Filters() {
-  const [filterName, setFilterName] = useState('');
+  const filtersStates = useContext(FiltersContext);
 
   const onInputChange = (event) => {
-    setFilterName(event.target.value);
+    filtersStates.setFilters({
+      ...filtersStates.filters,
+      filterName: event.target.value,
+    });
   };
 
   return (
@@ -19,7 +23,7 @@ function Filters() {
           type="text"
           className="n-f-i"
           placeholder=" "
-          value={ filterName }
+          value={ filtersStates.filterName }
           onChange={ onInputChange }
         />
         <label
