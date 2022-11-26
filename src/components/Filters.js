@@ -1,6 +1,13 @@
+import { useState } from 'react';
 import '../style/Filters.css';
 
 function Filters() {
+  const [filterName, setFilterName] = useState('');
+
+  const onInputChange = (event) => {
+    setFilterName(event.target.value);
+  };
+
   return (
     <section className="filters-section">
       <div
@@ -12,6 +19,8 @@ function Filters() {
           type="text"
           className="n-f-i"
           placeholder=" "
+          value={ filterName }
+          onChange={ onInputChange }
         />
         <label
           htmlFor="name-filter"
