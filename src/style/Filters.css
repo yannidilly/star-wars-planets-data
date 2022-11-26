@@ -1,5 +1,5 @@
 .filters-section {
-  background-color: gray;
+  background-color: rgb(37, 50, 122);
 }
 
 .n-f-d {
@@ -38,7 +38,7 @@
 
 .n-f-i:focus ~ .n-f-l, .n-f-i:not( :placeholder-shown ).n-f-i:not( :focus ) ~ .n-f-l {
   /* alteração de nomes da classe para funcionar o ESlint */
-  background-color: gray;
+  background-color: rgb(37, 50, 122);
   font-size: 16px;
   padding: 0 10px;
   top: 32%;
