@@ -6,7 +6,7 @@ function Filters() {
   const [actualFilterNumber, setActualFilterNumber] = useState({
     type: 'population',
     comparisonNumber: 'maior que',
-    valueNumber: '',
+    valueNumber: 0,
   });
   const filtersStates = useContext(FiltersContext);
 
@@ -81,11 +81,11 @@ function Filters() {
             value={ actualFilterNumber.type }
             onChange={ onSelectChange }
           >
-            <option value="population">Population</option>
-            <option value="orbital_period">Orbital Period</option>
-            <option value="diameter">Diameter</option>
-            <option value="rotation_period">Rotation Period</option>
-            <option value="surface_water">Surface Water</option>
+            <option value="population">population</option>
+            <option value="orbital_period">orbital_period</option>
+            <option value="diameter">diameter</option>
+            <option value="rotation_period">rotation_period</option>
+            <option value="surface_water">surface_water</option>
           </select>
           <select
             data-testid="comparison-filter"
