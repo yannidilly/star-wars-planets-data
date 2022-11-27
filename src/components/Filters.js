@@ -25,6 +25,7 @@ function Filters() {
           placeholder=" "
           value={ filtersStates.filters.filterName }
           onChange={ onInputChange }
+          autoComplete="off"
         />
         {/* label comentada abaixo para passar no teste do cypress */}
         {/* <label
@@ -34,6 +35,31 @@ function Filters() {
           <input className="hidden" />
           Enter planet name
         </label> */}
+      </div>
+      <div className="number-filters-div">
+        <select className="type-number-filter" data-testid="column-filter">
+          <option>Population</option>
+          <option>Orbital Period</option>
+          <option>Diameter</option>
+          <option>Rotation Period</option>
+          <option>Surface Water</option>
+        </select>
+        <select className="comparison-number-filter" data-testid="comparison-filter">
+          <option>maior que</option>
+          <option>menor que</option>
+          <option>igual a</option>
+        </select>
+        <input
+          className="value-number-filter"
+          data-testid="value-filter"
+        />
+        <button
+          data-testid="button-filter"
+          className="button-number-filter"
+          type="button"
+        >
+          Filter
+        </button>
       </div>
     </section>
   );

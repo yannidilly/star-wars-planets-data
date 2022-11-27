@@ -6,7 +6,7 @@
 .n-f-d {
   align-items: center;
   display: flex;
-  height: 150px;
+  height: 100px;
   justify-content: center;
   position: relative;
 }
@@ -47,4 +47,44 @@
 .hidden {
   display: none;
   visibility: hidden;
+}
+
+.number-filters-div {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0;
+  height: 75px;
+}
+
+.type-number-filter, .comparison-number-filter {
+  background-color: rgb(9, 49, 94);
+  border: 0;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  height: 30px;
+  width: 15%;
+  font-size: 14px;
+  margin: 0 15px;
+}
+
+.type-number-filter::selection {
+  border: none;
+}
+
+.value-number-filter {
+  all: unset;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 25px;
+  text-align: center;
+  width: 100px;
+}
+
+.button-number-filter {
+  background-color: rgb(9, 49, 94);
+  border-radius: 5px;
+  color: white;
+  height: 25px;
+  margin-left: 15px;
+  width: 60px;
 }
