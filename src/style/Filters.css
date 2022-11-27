@@ -1,5 +1,5 @@
 .filters-section {
-  background-color: rgb(37, 50, 122);
+  background-image: linear-gradient(rgb(1, 5, 26), rgb(6, 13, 56));
 }
 
 /* name-filter-div */
@@ -24,7 +24,7 @@
 /* name-filter-input */
 .n-f-i {
   background: none;
-  border: 2px solid black;
+  border: 2px solid rgb(22, 33, 95);
   border-radius: 5px;
   color: white;
   font-size: 20px;
@@ -73,7 +73,7 @@
 
 .value-number-filter {
   all: unset;
-  border: 1px solid black;
+  border: 2px solid rgb(37, 50, 122);
   border-radius: 5px;
   height: 25px;
   text-align: center;
@@ -84,7 +84,20 @@
   background-color: rgb(9, 49, 94);
   border-radius: 5px;
   color: white;
-  height: 25px;
+  height: 28px;
   margin-left: 15px;
   width: 60px;
+}
+
+.active-filters {
+  padding-bottom: 30px;
+}
+
+.filter {
+  display: flex;
+  margin: 0 10px;
+}
+
+.filter-description {
+  margin: 5px 10px;
 }
