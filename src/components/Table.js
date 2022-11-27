@@ -7,7 +7,7 @@ import '../style/Table.css';
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
   const planetsDataObj = useContext(PlanetsDataContext);
-  const { filters: { filterName } } = useContext(FiltersContext);
+  const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
 
   const planetsDataFormat = (data) => {
     const localData = data;
@@ -27,6 +27,28 @@ function Table() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const filterPlanets = () => {
+    const planetsNameFilter = planetsDataObj.planetsData.results
+      .filter((planetInfo) => planetInfo.name.includes(filterName));
+    let planetsNumberFilter = planetsNameFilter;
+    for (let index = 0; index < filtersNumber.length; index += 1) {
+      planetsNumberFilter = planetsNumberFilter.filter((planetInfo) => {
+        if (filtersNumber[index].comparisonNumber === 'maior que') {
+          return planetInfo[filtersNumber[index].type] > filtersNumber[index].valueNumber;
+        }
+        if (filtersNumber[index].comparisonNumber === 'menor que') {
+          return planetInfo[filtersNumber[index].type] < filtersNumber[index].valueNumber;
+        }
+        if (filtersNumber[index].comparisonNumber === 'igual a') {
+          return planetInfo[filtersNumber[index].type] === filtersNumber[index]
+            .valueNumber;
+        }
+        return null;
+      });
+    }
+    return planetsNumberFilter;
   };
 
   useEffect(() => {
@@ -61,31 +83,29 @@ function Table() {
                 </thead>
                 <tbody>
                   {
-                    planetsDataObj.planetsData.results
-                      .filter((planetInfo) => planetInfo.name.includes(filterName))
-                      .map((planetInfo, index) => (
-                        <tr key={ index }>
-                          <td>{ planetInfo.name }</td>
-                          <td>{ planetInfo.rotation_period }</td>
-                          <td>{ planetInfo.orbital_period }</td>
-                          <td>{ planetInfo.diameter }</td>
-                          <td>{ planetInfo.climate }</td>
-                          <td>{ planetInfo.gravity }</td>
-                          <td>{ planetInfo.terrain }</td>
-                          <td>{ planetInfo.surface_water }</td>
-                          <td>{ planetInfo.population }</td>
-                          <td>
-                            {
-                              planetInfo.films.map((film, filmIndex) => (
-                                <p className="film-link" key={ filmIndex }>{ film }</p>
-                              ))
-                            }
-                          </td>
-                          <td className="film-created">{ planetInfo.created }</td>
-                          <td className="film-edited">{ planetInfo.edited }</td>
-                          <td className="planet-url">{ planetInfo.url }</td>
-                        </tr>
-                      ))
+                    filterPlanets().map((planetInfo, index) => (
+                      <tr key={ index }>
+                        <td>{ planetInfo.name }</td>
+                        <td>{ planetInfo.rotation_period }</td>
+                        <td>{ planetInfo.orbital_period }</td>
+                        <td>{ planetInfo.diameter }</td>
+                        <td>{ planetInfo.climate }</td>
+                        <td>{ planetInfo.gravity }</td>
+                        <td>{ planetInfo.terrain }</td>
+                        <td>{ planetInfo.surface_water }</td>
+                        <td>{ planetInfo.population }</td>
+                        <td>
+                          {
+                            planetInfo.films.map((film, filmIndex) => (
+                              <p className="film-link" key={ filmIndex }>{ film }</p>
+                            ))
+                          }
+                        </td>
+                        <td className="film-created">{ planetInfo.created }</td>
+                        <td className="film-edited">{ planetInfo.edited }</td>
+                        <td className="planet-url">{ planetInfo.url }</td>
+                      </tr>
+                    ))
                   }
                 </tbody>
               </table>
