@@ -1,14 +1,44 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import '../style/Filters.css';
 
 function Filters() {
+  const [actualFilterNumber, setActualFilterNumber] = useState({
+    type: 'population',
+    comparisonNumber: 'maior que',
+    valueNumber: 0,
+  });
   const filtersStates = useContext(FiltersContext);
 
   const onInputChange = (event) => {
+    if (event.target.name === 'nameFilter') {
+      filtersStates.setFilters({
+        ...filtersStates.filters,
+        filterName: event.target.value,
+      });
+    }
+    if (event.target.name === 'valueNumber') {
+      setActualFilterNumber({
+        ...actualFilterNumber,
+        valueNumber: event.target.value,
+      });
+    }
+  };
+
+  const onSelectChange = (event) => {
+    setActualFilterNumber({
+      ...actualFilterNumber,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const addNumberFilterOnGlobalState = () => {
     filtersStates.setFilters({
       ...filtersStates.filters,
-      filterName: event.target.value,
+      filtersNumber: [
+        ...filtersStates.filters.filtersNumber,
+        actualFilterNumber,
+      ],
     });
   };
 
@@ -23,6 +53,7 @@ function Filters() {
           type="text"
           className="n-f-i"
           placeholder=" "
+          name="nameFilter"
           value={ filtersStates.filters.filterName }
           onChange={ onInputChange }
           autoComplete="off"
@@ -37,26 +68,39 @@ function Filters() {
         </label> */}
       </div>
       <div className="number-filters-div">
-        <select className="type-number-filter" data-testid="column-filter">
-          <option>Population</option>
-          <option>Orbital Period</option>
-          <option>Diameter</option>
-          <option>Rotation Period</option>
-          <option>Surface Water</option>
+        <select
+          data-testid="column-filter"
+          className="type-number-filter"
+          name="type"
+          onChange={ onSelectChange }
+        >
+          <option value="population">Population</option>
+          <option value="orbital_period">Orbital Period</option>
+          <option value="diameter">Diameter</option>
+          <option value="rotation_period">Rotation Period</option>
+          <option value="surface_water">Surface Water</option>
         </select>
-        <select className="comparison-number-filter" data-testid="comparison-filter">
+        <select
+          data-testid="comparison-filter"
+          className="comparison-number-filter"
+          name="comparisonNumber"
+          onChange={ onSelectChange }
+        >
           <option>maior que</option>
           <option>menor que</option>
           <option>igual a</option>
         </select>
         <input
-          className="value-number-filter"
           data-testid="value-filter"
+          className="value-number-filter"
+          name="valueNumber"
+          onChange={ onInputChange }
         />
         <button
           data-testid="button-filter"
           className="button-number-filter"
           type="button"
+          onClick={ addNumberFilterOnGlobalState }
         >
           Filter
         </button>
