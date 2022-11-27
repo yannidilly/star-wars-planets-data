@@ -33,13 +33,16 @@ function Table() {
     const planetsNameFilter = planetsDataObj.planetsData.results
       .filter((planetInfo) => planetInfo.name.includes(filterName));
     let planetsNumberFilter = planetsNameFilter;
+    console.log(planetsNumberFilter);
     for (let index = 0; index < filtersNumber.length; index += 1) {
       planetsNumberFilter = planetsNumberFilter.filter((planetInfo) => {
         if (filtersNumber[index].comparisonNumber === 'maior que') {
-          return planetInfo[filtersNumber[index].type] > filtersNumber[index].valueNumber;
+          return planetInfo[filtersNumber[index].type] > JSON.parse(filtersNumber[index]
+            .valueNumber);
         }
         if (filtersNumber[index].comparisonNumber === 'menor que') {
-          return planetInfo[filtersNumber[index].type] < filtersNumber[index].valueNumber;
+          return planetInfo[filtersNumber[index].type] < JSON.parse(filtersNumber[index]
+            .valueNumber);
         }
         if (filtersNumber[index].comparisonNumber === 'igual a') {
           return planetInfo[filtersNumber[index].type] === filtersNumber[index]
@@ -47,7 +50,9 @@ function Table() {
         }
         return null;
       });
+      console.log(index);
     }
+    console.log(planetsNumberFilter);
     return planetsNumberFilter;
   };
 
