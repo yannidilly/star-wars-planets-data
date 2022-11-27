@@ -51,8 +51,8 @@
 
 .number-filters-div {
   display: flex;
-  justify-content: center;
   height: 75px;
+  justify-content: center;
   padding: 25px 0;
 }
 
@@ -63,8 +63,8 @@
   color: white;
   font-size: 14px;
   height: 30px;
-  width: 15%;
   margin: 0 15px;
+  width: 15%;
 }
 
 .type-number-filter::selection {
