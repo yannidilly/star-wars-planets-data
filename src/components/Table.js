@@ -33,7 +33,6 @@ function Table() {
     const planetsNameFilter = planetsDataObj.planetsData.results
       .filter((planetInfo) => planetInfo.name.includes(filterName));
     let planetsNumberFilter = planetsNameFilter;
-    console.log(planetsNumberFilter);
     for (let index = 0; index < filtersNumber.length; index += 1) {
       planetsNumberFilter = planetsNumberFilter.filter((planetInfo) => {
         if (filtersNumber[index].comparisonNumber === 'maior que') {
@@ -50,9 +49,7 @@ function Table() {
         }
         return null;
       });
-      console.log(index);
     }
-    console.log(planetsNumberFilter);
     return planetsNumberFilter;
   };
 
