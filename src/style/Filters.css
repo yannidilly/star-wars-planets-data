@@ -52,8 +52,8 @@
 .number-filters-div {
   display: flex;
   justify-content: center;
-  padding: 25px 0;
   height: 75px;
+  padding: 25px 0;
 }
 
 .type-number-filter, .comparison-number-filter {
@@ -61,9 +61,9 @@
   border: 0;
   border-radius: 5px 5px 0 0;
   color: white;
+  font-size: 14px;
   height: 30px;
   width: 15%;
-  font-size: 14px;
   margin: 0 15px;
 }
 
