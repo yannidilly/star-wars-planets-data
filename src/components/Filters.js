@@ -6,7 +6,7 @@ function Filters() {
   const [actualFilterNumber, setActualFilterNumber] = useState({
     type: 'population',
     comparisonNumber: 'maior que',
-    valueNumber: 0,
+    valueNumber: '',
   });
   const filtersStates = useContext(FiltersContext);
 
@@ -40,6 +40,11 @@ function Filters() {
         actualFilterNumber,
       ],
     });
+    setActualFilterNumber({
+      type: 'population',
+      comparisonNumber: 'maior que',
+      valueNumber: '',
+    });
   };
 
   return (
@@ -72,6 +77,7 @@ function Filters() {
           data-testid="column-filter"
           className="type-number-filter"
           name="type"
+          value={ actualFilterNumber.type }
           onChange={ onSelectChange }
         >
           <option value="population">Population</option>
@@ -84,6 +90,7 @@ function Filters() {
           data-testid="comparison-filter"
           className="comparison-number-filter"
           name="comparisonNumber"
+          value={ actualFilterNumber.comparisonNumber }
           onChange={ onSelectChange }
         >
           <option>maior que</option>
@@ -93,7 +100,9 @@ function Filters() {
         <input
           data-testid="value-filter"
           className="value-number-filter"
+          type="number"
           name="valueNumber"
+          value={ actualFilterNumber.valueNumber }
           onChange={ onInputChange }
         />
         <button
