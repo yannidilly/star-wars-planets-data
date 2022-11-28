@@ -62,7 +62,7 @@ function Table() {
     <div>
       {
         (isLoading)
-          ? <div className="table-loading" />
+          ? <div className="table-loading" data-testid="loading" />
           : (
             <section className="table-section">
               <table>

@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
-test('I am your test', () => {
+test('Testa se aparece o Header na página', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Hello, App!/i);
-  expect(linkElement).toBeInTheDocument();
+  const headerText = screen.queryByRole('heading', { level: 1, name: /star wars planets/i});
+  expect(headerText).toBeInTheDocument();
 });
