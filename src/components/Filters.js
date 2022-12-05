@@ -61,8 +61,13 @@ function Filters() {
     });
   };
 
-  const removeFilter = () => {
-
+  const removeFilter = (type) => {
+    const usedFilters = filtersStates.filters.filtersNumber;
+    usedFilters.splice(usedFilters.map((filter) => filter.type).indexOf(type), 1);
+    filtersStates.setFilters({
+      ...filtersStates.filters,
+      filtersNumber: usedFilters,
+    });
   };
 
   return (
@@ -137,16 +142,16 @@ function Filters() {
       <div className="active-filters">
         {
           filtersStates.filters.filtersNumber.map((filter, index) => (
-            <div className="filter" key={ index }>
+            <div className="filter" data-testid="filter" key={ index }>
               <p className="filter-description">{filter.type}</p>
               <p className="filter-description">{filter.comparisonNumber}</p>
               <p className="filter-description">{ filter.valueNumber }</p>
               <button
                 className="delete-button"
                 type="button"
-                onClick={ removeFilter }
+                onClick={ () => removeFilter(filter.type) }
               >
-                <img className="delete-icon" src={ Trash } alt="" />
+                <img className="delete-icon" src={ Trash } alt="delete button" />
               </button>
             </div>
           ))
