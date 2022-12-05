@@ -11,7 +11,7 @@ function Filters() {
   });
   const filtersStates = useContext(FiltersContext);
   const allTypeFilterNumbersOptions = [
-    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water', '',
   ];
 
   const availableFilters = () => {
@@ -47,18 +47,20 @@ function Filters() {
   };
 
   const addNumberFilterOnGlobalState = () => {
-    filtersStates.setFilters({
-      ...filtersStates.filters,
-      filtersNumber: [
-        ...filtersStates.filters.filtersNumber,
-        actualFilterNumber,
-      ],
-    });
-    setActualFilterNumber({
-      type: availableFilters()[0], // resolver erro de sincronissidade
-      comparisonNumber: 'maior que',
-      valueNumber: '0',
-    });
+    if (availableFilters()[0] !== '') {
+      filtersStates.setFilters({
+        ...filtersStates.filters,
+        filtersNumber: [
+          ...filtersStates.filters.filtersNumber,
+          actualFilterNumber,
+        ],
+      });
+      setActualFilterNumber({
+        type: availableFilters()[1],
+        comparisonNumber: 'maior que',
+        valueNumber: '0',
+      });
+    }
   };
 
   const removeFilter = (type) => {
