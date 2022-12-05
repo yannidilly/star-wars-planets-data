@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import '../style/Filters.css';
+import Trash from '../icons/trash.svg';
 
 function Filters() {
   const [actualFilterNumber, setActualFilterNumber] = useState({
@@ -58,6 +59,10 @@ function Filters() {
       comparisonNumber: 'maior que',
       valueNumber: '0',
     });
+  };
+
+  const removeFilter = () => {
+
   };
 
   return (
@@ -136,6 +141,12 @@ function Filters() {
               <p className="filter-description">{filter.type}</p>
               <p className="filter-description">{filter.comparisonNumber}</p>
               <p className="filter-description">{ filter.valueNumber }</p>
+              <button
+                type="button"
+                onClick={ removeFilter }
+              >
+                <img src={ Trash } alt="" />
+              </button>
             </div>
           ))
         }
