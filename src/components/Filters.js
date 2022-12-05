@@ -72,6 +72,13 @@ function Filters() {
     });
   };
 
+  const resetFilters = () => {
+    filtersStates.setFilters({
+      ...filtersStates.filters,
+      filtersNumber: [],
+    });
+  };
+
   return (
     <section className="filters-section">
       <div className="create-filters-div">
@@ -138,6 +145,13 @@ function Filters() {
             onClick={ addNumberFilterOnGlobalState }
           >
             Filter
+          </button>
+          <button
+            className="button-clean-number-filters"
+            type="button"
+            onClick={ resetFilters }
+          >
+            Clean all filters
           </button>
         </div>
       </div>
