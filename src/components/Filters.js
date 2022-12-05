@@ -9,6 +9,19 @@ function Filters() {
     valueNumber: 0,
   });
   const filtersStates = useContext(FiltersContext);
+  const allTypeFilterNumbersOptions = [
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
+  ];
+
+  const availableFilters = () => {
+    const usedFilters = filtersStates.filters.filtersNumber;
+    const usedFiltersTypes = usedFilters.map((filter) => filter.type);
+    let unusedFilters = allTypeFilterNumbersOptions;
+    usedFilters.forEach((usedFilter, index) => {
+      unusedFilters = unusedFilters.filter((type) => type !== usedFiltersTypes[index]);
+    });
+    return unusedFilters;
+  };
 
   const onInputChange = (event) => {
     if (event.target.name === 'nameFilter') {
@@ -41,9 +54,9 @@ function Filters() {
       ],
     });
     setActualFilterNumber({
-      type: 'population',
+      type: availableFilters()[0], // resolver erro de sincronissidade
       comparisonNumber: 'maior que',
-      valueNumber: '',
+      valueNumber: '0',
     });
   };
 
@@ -81,11 +94,11 @@ function Filters() {
             value={ actualFilterNumber.type }
             onChange={ onSelectChange }
           >
-            <option value="population">population</option>
-            <option value="orbital_period">orbital_period</option>
-            <option value="diameter">diameter</option>
-            <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option>
+            {
+              availableFilters().map((typeFilter, index) => (
+                <option key={ index } value={ typeFilter }>{ typeFilter }</option>
+              ))
+            }
           </select>
           <select
             data-testid="comparison-filter"
