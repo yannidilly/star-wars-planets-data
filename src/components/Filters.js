@@ -142,10 +142,11 @@ function Filters() {
               <p className="filter-description">{filter.comparisonNumber}</p>
               <p className="filter-description">{ filter.valueNumber }</p>
               <button
+                className="delete-button"
                 type="button"
                 onClick={ removeFilter }
               >
-                <img src={ Trash } alt="" />
+                <img className="delete-icon" src={ Trash } alt="" />
               </button>
             </div>
           ))

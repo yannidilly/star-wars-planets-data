@@ -101,3 +101,14 @@
 .filter-description {
   margin: 5px 10px;
 }
+
+.delete-button {
+  all: unset;
+  padding: 0 10px;
+  padding-top: 3px;
+}
+
+.delete-icon {
+  height: 15px;
+  width: 15px;
+}
