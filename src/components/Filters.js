@@ -11,7 +11,7 @@ function Filters() {
   });
   const filtersStates = useContext(FiltersContext);
   const allTypeFilterNumbersOptions = [
-    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water', '',
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
   ];
 
   const availableFilters = () => {
@@ -47,7 +47,7 @@ function Filters() {
   };
 
   const addNumberFilterOnGlobalState = () => {
-    if (availableFilters()[0] !== '') {
+    if (availableFilters()[0] !== undefined) {
       filtersStates.setFilters({
         ...filtersStates.filters,
         filtersNumber: [
@@ -147,6 +147,7 @@ function Filters() {
             Filter
           </button>
           <button
+            data-testid="button-remove-filters"
             className="button-clean-number-filters"
             type="button"
             onClick={ resetFilters }
