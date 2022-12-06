@@ -35,7 +35,7 @@ test('Testa se a tabela muda dinamicamente de acordo com o filtro de nome', asyn
   expect(alderaanText).not.toBeInTheDocument();
 });
 
-test('Testa se a tabela muda dinamicamente de acordo com o filtro de número', async () => {
+test('Testa se a tabela muda ao usar o filtro numérico de /maior que/i', async () => {
   global.fetch = jest.fn(() => Promise.resolve({
     json: () => Promise.resolve(planetsData),
   }));
@@ -55,4 +55,64 @@ test('Testa se a tabela muda dinamicamente de acordo com o filtro de número', a
 
   let tableRows = screen.queryAllByRole('row');
   expect(tableRows.length).toBe(4);
+});
+
+test('Testa se a tabela muda ao usar o filtro numérico de /menor que/i', async () => {
+  global.fetch = jest.fn(() => Promise.resolve({
+    json: () => Promise.resolve(planetsData),
+  }));
+
+  render(<App />);
+  const valueFilterInput = screen.queryByTestId('value-filter');
+  expect(valueFilterInput).toBeInTheDocument();
+  const filterButton = screen.queryByRole('button', { name: 'Filter' });
+  expect(filterButton).toBeInTheDocument();
+
+  const loading = screen.queryByTestId('loading');
+  await waitForElementToBeRemoved(loading);
+  expect(loading).not.toBeInTheDocument();
+
+  const comparisonFilter = screen.queryByTestId('comparison-filter');
+  expect(comparisonFilter).toBeInTheDocument();
+  expect(comparisonFilter.value).toBe('maior que');
+
+  userEvent.selectOptions(comparisonFilter, 'menor que')
+  expect(comparisonFilter.value).toBe('menor que');
+
+
+  userEvent.type(valueFilterInput, '250000');
+  userEvent.click(filterButton);
+
+  const tableRows = screen.queryAllByRole('row');
+  expect(tableRows.length).toBe(3);
+});
+
+test('Testa se a tabela muda ao usar o filtro numérico de /igual a/i', async () => {
+  global.fetch = jest.fn(() => Promise.resolve({
+    json: () => Promise.resolve(planetsData),
+  }));
+
+  render(<App />);
+  const valueFilterInput = screen.queryByTestId('value-filter');
+  expect(valueFilterInput).toBeInTheDocument();
+  const filterButton = screen.queryByRole('button', { name: 'Filter' });
+  expect(filterButton).toBeInTheDocument();
+
+  const loading = screen.queryByTestId('loading');
+  await waitForElementToBeRemoved(loading);
+  expect(loading).not.toBeInTheDocument();
+
+  const comparisonFilter = screen.queryByTestId('comparison-filter');
+  expect(comparisonFilter).toBeInTheDocument();
+  expect(comparisonFilter.value).toBe('maior que');
+
+  userEvent.selectOptions(comparisonFilter, 'igual a')
+  expect(comparisonFilter.value).toBe('igual a');
+
+
+  userEvent.type(valueFilterInput, '200000');
+  userEvent.click(filterButton);
+
+  const tableRows = screen.queryAllByRole('row');
+  expect(tableRows.length).toBe(1);
 });
