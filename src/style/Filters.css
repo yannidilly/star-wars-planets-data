@@ -67,10 +67,6 @@
   width: 15%;
 }
 
-.type-number-filter::selection {
-  border: none;
-}
-
 .value-number-filter {
   all: unset;
   border: 2px solid rgb(37, 50, 122);

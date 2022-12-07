@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import FiltersContext from '../context/FiltersContext';
+import Sort from './Sort';
 import '../style/Filters.css';
 import Trash from '../icons/trash.svg';
 
@@ -105,6 +106,7 @@ function Filters() {
           Enter planet name
         </label> */}
         </div>
+        <Sort />
         <div className="number-filters-div">
           <select
             data-testid="column-filter"

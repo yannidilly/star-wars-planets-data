@@ -87,7 +87,7 @@ function Table() {
                   {
                     filterPlanets().map((planetInfo, index) => (
                       <tr key={ index }>
-                        <td>{ planetInfo.name }</td>
+                        <td data-testid={ planetInfo.name }>{ planetInfo.name }</td>
                         <td>{ planetInfo.rotation_period }</td>
                         <td>{ planetInfo.orbital_period }</td>
                         <td>{ planetInfo.diameter }</td>
