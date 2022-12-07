@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import OrderContext from '../context/OrderContext';
 import '../style/Sort.css';
 
 function Sort() {
   const [sortType, setSortType] = useState('');
   const [sortCondition, setSortCondition] = useState('population');
+  const order = useContext(OrderContext);
 
   const onOrderButtonClick = () => {
-    console.log(sortType);
-    console.log(sortCondition);
+    order.setOrder({
+      column: sortCondition,
+      sort: sortType,
+    });
   };
 
   return (
