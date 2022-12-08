@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import PlanetsDataContext from '../context/PlanetsDataContext';
+import OrderContext from '../context/OrderContext';
 import fetchPlanets from '../services/fetchPlanets';
 import '../style/Table.css';
 
@@ -8,6 +9,7 @@ function Table() {
   const [isLoading, setIsLoading] = useState(true);
   const planetsDataObj = useContext(PlanetsDataContext);
   const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
+  const orderContext = useContext(OrderContext);
 
   const planetsDataFormat = (data) => {
     const localData = data;
@@ -53,6 +55,32 @@ function Table() {
     return planetsNumberFilter;
   };
 
+  const orderPlanets = () => {
+    const filteredPlanetsData = filterPlanets();
+    const orderType = orderContext.order.column;
+    const orderCondition = orderContext.order.sort;
+    let orderPlanetsData = filteredPlanetsData;
+
+    if (orderCondition === 'ASC') {
+      orderPlanetsData = filteredPlanetsData
+        .sort((next, b) => parseInt(next[orderType], 10) - parseInt(b[orderType], 10));
+      const unknownValuePlanets = orderPlanetsData
+        .filter((planet) => planet[orderType] === 'unknown');
+      const unknownValuePosition = unknownValuePlanets
+        .map((planet) => orderPlanetsData.indexOf(planet));
+      for (let index = 0; index < unknownValuePosition.length; index += 1) {
+        const unknownPlanetData = orderPlanetsData[unknownValuePosition[0]];
+        orderPlanetsData.splice(unknownValuePosition[0], 1);
+        orderPlanetsData.push(unknownPlanetData);
+      }
+    } else {
+      orderPlanetsData = filteredPlanetsData
+        .sort((a, b) => parseInt(b[orderType], 10) - parseInt(a[orderType], 10));
+    }
+
+    return orderPlanetsData;
+  };
+
   useEffect(() => {
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,7 +113,7 @@ function Table() {
                 </thead>
                 <tbody>
                   {
-                    filterPlanets().map((planetInfo, index) => (
+                    orderPlanets().map((planetInfo, index) => (
                       <tr key={ index }>
                         <td data-testid={ planetInfo.name }>{ planetInfo.name }</td>
                         <td>{ planetInfo.rotation_period }</td>

@@ -1,8 +1,6 @@
 const initialOrderStates = {
-  order: {
-    column: '',
-    sort: '',
-  },
+  column: '',
+  sort: '',
 };
 
 export default initialOrderStates;
