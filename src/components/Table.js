@@ -115,7 +115,7 @@ function Table() {
                   {
                     orderPlanets().map((planetInfo, index) => (
                       <tr key={ index }>
-                        <td data-testid={ planetInfo.name }>{ planetInfo.name }</td>
+                        <td data-testid="planet-name">{ planetInfo.name }</td>
                         <td>{ planetInfo.rotation_period }</td>
                         <td>{ planetInfo.orbital_period }</td>
                         <td>{ planetInfo.diameter }</td>
