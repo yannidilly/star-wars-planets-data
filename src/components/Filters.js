@@ -167,6 +167,7 @@ function Filters() {
               <p className="filter-description">{ filter.valueNumber }</p>
               <button
                 className="delete-button"
+                data-testid="delete-filter-button"
                 type="button"
                 onClick={ () => removeFilter(filter.type) }
               >

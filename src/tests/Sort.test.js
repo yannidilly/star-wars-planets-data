@@ -4,7 +4,11 @@ import userEvent from '@testing-library/user-event';
 import planetsData from './helpers/planetsData';
 import App from '../App';
 
+
 describe('Testa o componente Sort', () => {
+
+  afterEach(() => jest.clearAllMocks());
+  
   test('Testa se a Tabela é reordenada quando o botão Order é clicado', async () => {
     global.fetch = jest.fn(() => Promise.resolve({
       json: () => Promise.resolve(planetsData),
