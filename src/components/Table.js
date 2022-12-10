@@ -7,6 +7,7 @@ import '../style/Table.css';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(false);
   const planetsDataObj = useContext(PlanetsDataContext);
   const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
   const orderContext = useContext(OrderContext);
@@ -25,7 +26,7 @@ function Table() {
       const fetchPlanetsData = await fetchPlanets();
       planetsDataObj.setPlanetsData(planetsDataFormat(fetchPlanetsData));
     } catch (error) {
-      console.log(error);
+      setFetchError(true);
     } finally {
       setIsLoading(false);
     }
@@ -45,11 +46,8 @@ function Table() {
           return planetInfo[filtersNumber[index].type] < JSON.parse(filtersNumber[index]
             .valueNumber);
         }
-        if (filtersNumber[index].comparisonNumber === 'igual a') {
-          return planetInfo[filtersNumber[index].type] === filtersNumber[index]
-            .valueNumber;
-        }
-        return null;
+        return planetInfo[filtersNumber[index].type] === filtersNumber[index]
+          .valueNumber;
       });
     }
     return planetsNumberFilter;
@@ -85,6 +83,10 @@ function Table() {
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (fetchError) {
+    return <h3>Could not load table</h3>;
+  }
 
   return (
     <div>

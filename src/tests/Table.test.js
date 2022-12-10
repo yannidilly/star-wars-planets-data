@@ -116,3 +116,18 @@ test('Testa se a tabela muda ao usar o filtro numérico de /igual a/i', async ()
   const tableRows = screen.queryAllByRole('row');
   expect(tableRows.length).toBe(1);
 });
+
+test('Verifica a tela em caso de erro no fetch', async () => {
+  global.fetch = jest.fn(() => Promise.resolve({
+    json: () => Promise.reject('Could not load table'),
+  }));
+
+  render(<App />);
+
+  const loading = screen.queryByTestId('loading');
+  await waitForElementToBeRemoved(loading);
+  expect(loading).not.toBeInTheDocument();
+
+  const errorTitle = screen.queryByRole('heading', { name: 'Could not load table' });
+  expect(errorTitle).toBeInTheDocument();
+});
