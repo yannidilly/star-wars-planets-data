@@ -38,10 +38,10 @@
 
 /* alteração de nomes da classe para funcionar o ESlint */
 .n-f-i:focus ~ .n-f-l, .n-f-i:not( :placeholder-shown ).n-f-i:not( :focus ) ~ .n-f-l {
-  background-color: rgb(37, 50, 122);
+  background-color: rgb(1, 5, 26);
   font-size: 16px;
   padding: 0 10px;
-  top: 32%;
+  top: 25%;
 }
 
 .hidden {
