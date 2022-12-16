@@ -47,14 +47,6 @@ thead > tr > th {
   top: 0;
 }
 
-.film-link, .film-created, .film-edited {
-  font-size: 8px;
-}
-
-.planet-url {
-  font-size: 2px;
-}
-
 .filter-section {
   background-color: gray;
   height: 80px;
