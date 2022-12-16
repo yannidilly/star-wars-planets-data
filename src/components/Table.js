@@ -34,7 +34,8 @@ function Table() {
 
   const filterPlanets = () => {
     const planetsNameFilter = planetsDataObj.planetsData.results
-      .filter((planetInfo) => planetInfo.name.includes(filterName));
+      .filter((planetInfo) => planetInfo.name.toLowerCase()
+        .includes(filterName.toLowerCase()));
     let planetsNumberFilter = planetsNameFilter;
     for (let index = 0; index < filtersNumber.length; index += 1) {
       planetsNumberFilter = planetsNumberFilter.filter((planetInfo) => {
