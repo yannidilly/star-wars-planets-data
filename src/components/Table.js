@@ -109,9 +109,6 @@ function Table() {
                     <th>Surface Water</th>
                     <th>Population</th>
                     <th>Films</th>
-                    <th>Created</th>
-                    <th>Edited</th>
-                    <th>URL</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -134,9 +131,6 @@ function Table() {
                             ))
                           }
                         </td>
-                        <td className="film-created">{ planetInfo.created }</td>
-                        <td className="film-edited">{ planetInfo.edited }</td>
-                        <td className="planet-url">{ planetInfo.url }</td>
                       </tr>
                     ))
                   }
