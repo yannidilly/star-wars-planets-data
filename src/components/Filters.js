@@ -97,14 +97,13 @@ function Filters() {
             onChange={ onInputChange }
             autoComplete="off"
           />
-          {/* label comentada abaixo para passar no teste do cypress */}
-          {/* <label
-          htmlFor="name-filter"
-          className="n-f-l"
-        >
-          <input className="hidden" />
-          Enter planet name
-        </label> */}
+          <label
+            htmlFor="name-filter"
+            className="n-f-l"
+          >
+            <input className="hidden" />
+            Enter planet name
+          </label>
         </div>
         <Sort />
         <div className="number-filters-div">
