@@ -51,3 +51,8 @@ thead > tr > th {
   background-color: gray;
   height: 80px;
 }
+
+.cell-button {
+  all: unset;
+  font-size: 18px;
+}
