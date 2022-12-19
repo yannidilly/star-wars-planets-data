@@ -3,8 +3,8 @@ import FiltersContext from '../context/FiltersContext';
 import PlanetsDataContext from '../context/PlanetsDataContext';
 import OrderContext from '../context/OrderContext';
 import fetchPlanets from '../services/fetchPlanets';
-import '../style/Table.css';
 import fetchMovies from '../services/fetchMovies';
+import '../style/Table.css';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,19 +14,11 @@ function Table() {
   const orderContext = useContext(OrderContext);
   const [filmsData, setFilmsData] = useState({});
 
-  const planetsDataFormat = (data) => {
-    const localData = data;
-    for (let index = 0; index < localData.results.length; index += 1) {
-      delete localData.results[index].residents;
-    }
-    return localData;
-  };
-
   const fetchData = async () => {
     try {
       setIsLoading(true);
       const fetchPlanetsData = await fetchPlanets();
-      planetsDataObj.setPlanetsData(planetsDataFormat(fetchPlanetsData));
+      planetsDataObj.setPlanetsData(fetchPlanetsData);
       const fetchFilmsData = await fetchMovies();
       setFilmsData(fetchFilmsData);
     } catch (error) {
