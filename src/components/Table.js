@@ -4,6 +4,7 @@ import PlanetsDataContext from '../context/PlanetsDataContext';
 import OrderContext from '../context/OrderContext';
 import fetchPlanets from '../services/fetchPlanets';
 import '../style/Table.css';
+import fetchMovies from '../services/fetchMovies';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +12,7 @@ function Table() {
   const planetsDataObj = useContext(PlanetsDataContext);
   const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
   const orderContext = useContext(OrderContext);
+  const [filmsData, setFilmsData] = useState({});
 
   const planetsDataFormat = (data) => {
     const localData = data;
@@ -25,6 +27,8 @@ function Table() {
       setIsLoading(true);
       const fetchPlanetsData = await fetchPlanets();
       planetsDataObj.setPlanetsData(planetsDataFormat(fetchPlanetsData));
+      const fetchFilmsData = await fetchMovies();
+      setFilmsData(fetchFilmsData);
     } catch (error) {
       setFetchError(true);
     } finally {
