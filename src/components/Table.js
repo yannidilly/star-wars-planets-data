@@ -53,10 +53,17 @@ function Table() {
   };
 
   const orderOnClick = (name) => {
-    orderContext.setOrder({
-      column: name,
-      sort: 'ASC',
-    });
+    if (orderContext.order.sort === 'DESC' && orderContext.order.column === name) {
+      orderContext.setOrder({
+        column: name,
+        sort: 'ASC',
+      });
+    } else {
+      orderContext.setOrder({
+        column: name,
+        sort: 'DESC',
+      });
+    }
   };
 
   const orderPlanets = () => {
