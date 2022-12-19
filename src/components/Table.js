@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-max-depth */
 import { useContext, useState, useEffect } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import PlanetsDataContext from '../context/PlanetsDataContext';
@@ -50,6 +52,13 @@ function Table() {
     return planetsNumberFilter;
   };
 
+  const orderOnClick = (name) => {
+    orderContext.setOrder({
+      column: name,
+      sort: 'ASC',
+    });
+  };
+
   const orderPlanets = () => {
     const filteredPlanetsData = filterPlanets();
     const orderType = orderContext.order.column;
@@ -72,14 +81,18 @@ function Table() {
       orderPlanetsData = filteredPlanetsData
         .sort((a, b) => parseInt(b[orderType], 10) - parseInt(a[orderType], 10));
     }
-
     return orderPlanetsData;
   };
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      orderPlanets();
+    }
+  }, [orderContext.order]);
 
   if (fetchError) {
     return <h3>Could not load table</h3>;
@@ -95,16 +108,92 @@ function Table() {
               <table>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Rotation Period</th>
-                    <th>Orbital Period</th>
-                    <th>Diameter</th>
-                    <th>Climate</th>
-                    <th>Gravity</th>
-                    <th>Terrain</th>
-                    <th>Surface Water</th>
-                    <th>Population</th>
-                    <th>Films</th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('name') }
+                      >
+                        Name
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('rotation_period') }
+                      >
+                        Rotation Period
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('orbital_period') }
+                      >
+                        Orbital Period
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('diameter') }
+                      >
+                        Diameter
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                      >
+                        Climate
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                      >
+                        Gravity
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                      >
+                        Terrain
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('surface_water') }
+                      >
+                        Surface Water
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                        onClick={ () => orderOnClick('population') }
+                      >
+                        Population
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        type="button"
+                        className="cell-button"
+                      >
+                        Films
+                      </button>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
