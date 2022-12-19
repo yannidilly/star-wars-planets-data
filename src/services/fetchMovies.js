@@ -1,5 +1,5 @@
-const fetchMovies = async (url) => {
-  const response = await fetch(url);
+const fetchMovies = async () => {
+  const response = await fetch('https://swapi.dev/api/films');
   const moviesData = await response.json();
   return moviesData;
 };
