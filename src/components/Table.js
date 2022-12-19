@@ -130,8 +130,13 @@ function Table() {
                         <td>{ planetInfo.population }</td>
                         <td>
                           {
-                            planetInfo.films.map((film, filmIndex) => (
-                              <p className="film-link" key={ filmIndex }>{ film }</p>
+                            planetInfo.films.map((filmLink, filmIndex) => (
+                              <p className="film-link" key={ filmIndex }>
+                                {
+                                  filmsData.results
+                                    .find((filmData) => filmData.url === filmLink).title
+                                }
+                              </p>
                             ))
                           }
                         </td>
