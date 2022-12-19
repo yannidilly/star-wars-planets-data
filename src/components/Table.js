@@ -4,6 +4,7 @@ import PlanetsDataContext from '../context/PlanetsDataContext';
 import OrderContext from '../context/OrderContext';
 import fetchPlanets from '../services/fetchPlanets';
 import '../style/Table.css';
+import fetchMovies from '../services/fetchMovies';
 
 function Table() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,6 +12,7 @@ function Table() {
   const planetsDataObj = useContext(PlanetsDataContext);
   const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
   const orderContext = useContext(OrderContext);
+  const [filmsData, setFilmsData] = useState({});
 
   const planetsDataFormat = (data) => {
     const localData = data;
@@ -25,6 +27,8 @@ function Table() {
       setIsLoading(true);
       const fetchPlanetsData = await fetchPlanets();
       planetsDataObj.setPlanetsData(planetsDataFormat(fetchPlanetsData));
+      const fetchFilmsData = await fetchMovies();
+      setFilmsData(fetchFilmsData);
     } catch (error) {
       setFetchError(true);
     } finally {
@@ -109,9 +113,6 @@ function Table() {
                     <th>Surface Water</th>
                     <th>Population</th>
                     <th>Films</th>
-                    <th>Created</th>
-                    <th>Edited</th>
-                    <th>URL</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -129,14 +130,16 @@ function Table() {
                         <td>{ planetInfo.population }</td>
                         <td>
                           {
-                            planetInfo.films.map((film, filmIndex) => (
-                              <p className="film-link" key={ filmIndex }>{ film }</p>
+                            planetInfo.films.map((filmLink, filmIndex) => (
+                              <p className="film-link" key={ filmIndex }>
+                                {
+                                  filmsData.results
+                                    .find((filmData) => filmData.url === filmLink).title
+                                }
+                              </p>
                             ))
                           }
                         </td>
-                        <td className="film-created">{ planetInfo.created }</td>
-                        <td className="film-edited">{ planetInfo.edited }</td>
-                        <td className="planet-url">{ planetInfo.url }</td>
                       </tr>
                     ))
                   }
