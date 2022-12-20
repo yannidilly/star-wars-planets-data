@@ -16,7 +16,6 @@ function Table() {
   const orderContext = useContext(OrderContext);
 
   const [isFilmsLoading, setIsFilmsLoading] = useState(true);
-  const [fetchFilmsError, setFetchFilmsError] = useState(false);
   const [filmsData, setFilmsData] = useState({});
 
   const fetchData = async () => {
@@ -36,7 +35,7 @@ function Table() {
       const fetchFilmsData = await fetchMovies();
       setFilmsData(fetchFilmsData);
     } catch (error) {
-      setFetchFilmsError(error);
+      console.log(error);
     } finally {
       setIsFilmsLoading(false);
     }
@@ -216,19 +215,13 @@ function Table() {
                         <td>{ planetInfo.population }</td>
                         <td>
                           {
-                            (fetchError) ? <p>Erro ao carregar os filmes</p>
+                            (isFilmsLoading) ? <div className="film-loading" />
                               : (
                                 planetInfo.films.map((filmLink, filmIndex) => (
                                   <p className="film-link" key={ filmIndex }>
                                     {
-                                      (isFilmsLoading)
-                                        ? (
-                                          <div className="film-loading" />
-                                        )
-                                        : (
-                                          filmsData.results.find((filmData) => filmData
-                                            .url === filmLink).title
-                                        )
+                                      filmsData.results.find((filmData) => filmData
+                                        .url === filmLink).title
                                     }
                                   </p>
                                 ))
