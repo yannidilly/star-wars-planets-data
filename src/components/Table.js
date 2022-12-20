@@ -16,6 +16,7 @@ function Table() {
   const orderContext = useContext(OrderContext);
 
   const [isFilmsLoading, setIsFilmsLoading] = useState(true);
+  const [fetchFilmsError, setFetchFilmsError] = useState(false);
   const [filmsData, setFilmsData] = useState({});
 
   const fetchData = async () => {
@@ -35,7 +36,7 @@ function Table() {
       const fetchFilmsData = await fetchMovies();
       setFilmsData(fetchFilmsData);
     } catch (error) {
-      console.log(error);
+      setFetchFilmsError(error);
     } finally {
       setIsFilmsLoading(false);
     }
@@ -113,7 +114,7 @@ function Table() {
     }
   }, [orderContext.order]);
 
-  if (fetchError) {
+  if (fetchError || fetchFilmsError) {
     return <h3>Could not load table</h3>;
   }
 
