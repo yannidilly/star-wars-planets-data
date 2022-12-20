@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/app-toot-name/static/css/main.79251322.css",
+    "main.js": "/app-toot-name/static/js/main.47c6ded6.js",
+    "static/media/trash.svg": "/app-toot-name/static/media/trash.0863823f88d8dc4951c00679c33afcdd.svg",
+    "index.html": "/app-toot-name/index.html",
+    "main.79251322.css.map": "/app-toot-name/static/css/main.79251322.css.map",
+    "main.47c6ded6.js.map": "/app-toot-name/static/js/main.47c6ded6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79251322.css",
+    "static/js/main.47c6ded6.js"
+  ]
+}
