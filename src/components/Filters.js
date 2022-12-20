@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import { useContext, useState } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import '../style/Filters.css';
@@ -105,38 +106,40 @@ function Filters() {
           </label>
         </div>
         <div className="number-filters-div">
-          <select
-            data-testid="column-filter"
-            className="type-number-filter"
-            name="type"
-            value={ actualFilterNumber.type }
-            onChange={ onSelectChange }
-          >
-            {
-              availableFilters().map((typeFilter, index) => (
-                <option key={ index } value={ typeFilter }>{ typeFilter }</option>
-              ))
-            }
-          </select>
-          <select
-            data-testid="comparison-filter"
-            className="comparison-number-filter"
-            name="comparisonNumber"
-            value={ actualFilterNumber.comparisonNumber }
-            onChange={ onSelectChange }
-          >
-            <option>maior que</option>
-            <option>menor que</option>
-            <option>igual a</option>
-          </select>
-          <input
-            data-testid="value-filter"
-            className="value-number-filter"
-            type="number"
-            name="valueNumber"
-            value={ actualFilterNumber.valueNumber }
-            onChange={ onInputChange }
-          />
+          <div className="select-number-filters-div">
+            <select
+              data-testid="column-filter"
+              className="type-number-filter"
+              name="type"
+              value={ actualFilterNumber.type }
+              onChange={ onSelectChange }
+            >
+              {
+                availableFilters().map((typeFilter, index) => (
+                  <option key={ index } value={ typeFilter }>{ typeFilter }</option>
+                ))
+              }
+            </select>
+            <select
+              data-testid="comparison-filter"
+              className="comparison-number-filter"
+              name="comparisonNumber"
+              value={ actualFilterNumber.comparisonNumber }
+              onChange={ onSelectChange }
+            >
+              <option>maior que</option>
+              <option>menor que</option>
+              <option>igual a</option>
+            </select>
+            <input
+              data-testid="value-filter"
+              className="value-number-filter"
+              type="number"
+              name="valueNumber"
+              value={ actualFilterNumber.valueNumber }
+              onChange={ onInputChange }
+            />
+          </div>
           <button
             data-testid="button-filter"
             className="button-number-filter"
