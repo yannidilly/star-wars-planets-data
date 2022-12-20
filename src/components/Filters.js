@@ -135,27 +135,30 @@ function Filters() {
               data-testid="value-filter"
               className="value-number-filter"
               type="number"
+              inputMode="numeric"
               name="valueNumber"
               value={ actualFilterNumber.valueNumber }
               onChange={ onInputChange }
             />
           </div>
-          <button
-            data-testid="button-filter"
-            className="button-number-filter"
-            type="button"
-            onClick={ addNumberFilterOnGlobalState }
-          >
-            Filter
-          </button>
-          <button
-            data-testid="button-remove-filters"
-            className="button-clean-number-filters"
-            type="button"
-            onClick={ resetFilters }
-          >
-            Clean all filters
-          </button>
+          <div className="buttons-number-filters-div">
+            <button
+              data-testid="button-filter"
+              className="button-number-filter"
+              type="button"
+              onClick={ addNumberFilterOnGlobalState }
+            >
+              Filter
+            </button>
+            <button
+              data-testid="button-remove-filters"
+              className="button-clean-number-filters"
+              type="button"
+              onClick={ resetFilters }
+            >
+              Clean all filters
+            </button>
+          </div>
         </div>
       </div>
       <div className="active-filters">

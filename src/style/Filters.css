@@ -74,10 +74,12 @@
 
 .value-number-filter {
   all: unset;
+  appearance: textfield;
   border: 2px solid rgb(37, 50, 122);
   border-radius: 5px;
   height: 25px;
-  text-align: right;
+  text-align: left;
+  padding-left: 10px;
   width: 75px;
 }
 
@@ -122,7 +124,7 @@
   width: 15px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .number-filters-div {
     flex-direction: column;
   }
@@ -143,7 +145,12 @@
 
   .select-number-filters-div {
     display: flex;
-    padding: 0 10px;
+    padding: 0 5px;
     width: auto;
+  }
+
+  .buttons-number-filters-div {
+    display: flex;
+    justify-content: center;
   }
 }
