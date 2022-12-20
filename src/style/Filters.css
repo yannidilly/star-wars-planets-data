@@ -6,7 +6,7 @@
 .n-f-d {
   align-items: center;
   display: flex;
-  height: 100px;
+  height: 120px;
   justify-content: center;
   position: relative;
 }
@@ -53,7 +53,12 @@
   display: flex;
   height: 75px;
   justify-content: center;
-  padding: 25px 0;
+}
+
+.select-number-filters-div {
+  display: flex;
+  justify-content: space-around;
+  width: 35%;
 }
 
 .type-number-filter, .comparison-number-filter {
@@ -63,17 +68,19 @@
   color: white;
   font-size: 14px;
   height: 30px;
-  margin: 0 15px;
-  width: 15%;
+  margin: 0 5px;
+  width: 50%;
 }
 
 .value-number-filter {
   all: unset;
+  appearance: textfield;
   border: 2px solid rgb(37, 50, 122);
   border-radius: 5px;
   height: 25px;
-  text-align: center;
-  width: 100px;
+  text-align: left;
+  padding-left: 10px;
+  width: 75px;
 }
 
 .button-number-filter {
@@ -115,4 +122,35 @@
 .delete-icon {
   height: 15px;
   width: 15px;
+}
+
+@media (max-width: 720px) {
+  .number-filters-div {
+    flex-direction: column;
+  }
+
+  .type-number-filter, .comparison-number-filter {
+    background-color: rgb(9, 49, 94);
+    border-radius: 5px 5px 0 0;
+    color: white;
+    font-size: 14px;
+    height: 30px;
+    margin: 0 5px 10px 5px;
+    width: 90%;
+  }
+
+  .value-number-filter {
+    text-align: center;
+  }
+
+  .select-number-filters-div {
+    display: flex;
+    padding: 0 5px;
+    width: auto;
+  }
+
+  .buttons-number-filters-div {
+    display: flex;
+    justify-content: center;
+  }
 }

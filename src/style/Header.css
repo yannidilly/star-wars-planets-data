@@ -14,3 +14,9 @@
   font-size: 50px;
   text-align: center;
 }
+
+@media (min-height: 1200px) {
+  .page-header {
+    background-position: -20% 0;
+  }
+}

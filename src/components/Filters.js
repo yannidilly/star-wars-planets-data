@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import { useContext, useState } from 'react';
 import FiltersContext from '../context/FiltersContext';
 import '../style/Filters.css';
@@ -105,54 +106,59 @@ function Filters() {
           </label>
         </div>
         <div className="number-filters-div">
-          <select
-            data-testid="column-filter"
-            className="type-number-filter"
-            name="type"
-            value={ actualFilterNumber.type }
-            onChange={ onSelectChange }
-          >
-            {
-              availableFilters().map((typeFilter, index) => (
-                <option key={ index } value={ typeFilter }>{ typeFilter }</option>
-              ))
-            }
-          </select>
-          <select
-            data-testid="comparison-filter"
-            className="comparison-number-filter"
-            name="comparisonNumber"
-            value={ actualFilterNumber.comparisonNumber }
-            onChange={ onSelectChange }
-          >
-            <option>maior que</option>
-            <option>menor que</option>
-            <option>igual a</option>
-          </select>
-          <input
-            data-testid="value-filter"
-            className="value-number-filter"
-            type="number"
-            name="valueNumber"
-            value={ actualFilterNumber.valueNumber }
-            onChange={ onInputChange }
-          />
-          <button
-            data-testid="button-filter"
-            className="button-number-filter"
-            type="button"
-            onClick={ addNumberFilterOnGlobalState }
-          >
-            Filter
-          </button>
-          <button
-            data-testid="button-remove-filters"
-            className="button-clean-number-filters"
-            type="button"
-            onClick={ resetFilters }
-          >
-            Clean all filters
-          </button>
+          <div className="select-number-filters-div">
+            <select
+              data-testid="column-filter"
+              className="type-number-filter"
+              name="type"
+              value={ actualFilterNumber.type }
+              onChange={ onSelectChange }
+            >
+              {
+                availableFilters().map((typeFilter, index) => (
+                  <option key={ index } value={ typeFilter }>{ typeFilter }</option>
+                ))
+              }
+            </select>
+            <select
+              data-testid="comparison-filter"
+              className="comparison-number-filter"
+              name="comparisonNumber"
+              value={ actualFilterNumber.comparisonNumber }
+              onChange={ onSelectChange }
+            >
+              <option>maior que</option>
+              <option>menor que</option>
+              <option>igual a</option>
+            </select>
+            <input
+              data-testid="value-filter"
+              className="value-number-filter"
+              type="number"
+              inputMode="numeric"
+              name="valueNumber"
+              value={ actualFilterNumber.valueNumber }
+              onChange={ onInputChange }
+            />
+          </div>
+          <div className="buttons-number-filters-div">
+            <button
+              data-testid="button-filter"
+              className="button-number-filter"
+              type="button"
+              onClick={ addNumberFilterOnGlobalState }
+            >
+              Filter
+            </button>
+            <button
+              data-testid="button-remove-filters"
+              className="button-clean-number-filters"
+              type="button"
+              onClick={ resetFilters }
+            >
+              Clean all filters
+            </button>
+          </div>
         </div>
       </div>
       <div className="active-filters">
