@@ -1,7 +1,7 @@
 {
-  "name": "sd-0x-project-react-context-hooks-starwars-datatable-filters",
+  "name": "star-wars-planets-data",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
     "node": "16 || 18"
   },
