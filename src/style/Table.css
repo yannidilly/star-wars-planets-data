@@ -14,6 +14,22 @@
   width: 40px;
 }
 
+.film-loading {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.film-loading:after {
+  animation: loading 2s ease-in-out infinite;
+  border: 5px solid #ddd;
+  border-radius: 50%;
+  border-top-color: #009579;
+  content: '';
+  height: 10px;
+  width: 10px;
+}
+
 @keyframes loading {
 
   to {

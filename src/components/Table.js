@@ -14,6 +14,9 @@ function Table() {
   const planetsDataObj = useContext(PlanetsDataContext);
   const { filters: { filterName, filtersNumber } } = useContext(FiltersContext);
   const orderContext = useContext(OrderContext);
+
+  const [isFilmsLoading, setIsFilmsLoading] = useState(true);
+  const [fetchFilmsError, setFetchFilmsError] = useState(false);
   const [filmsData, setFilmsData] = useState({});
 
   const fetchData = async () => {
@@ -21,12 +24,21 @@ function Table() {
       setIsLoading(true);
       const fetchPlanetsData = await fetchPlanets();
       planetsDataObj.setPlanetsData(fetchPlanetsData);
-      const fetchFilmsData = await fetchMovies();
-      setFilmsData(fetchFilmsData);
     } catch (error) {
       setFetchError(true);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchFilms = async () => {
+    try {
+      const fetchFilmsData = await fetchMovies();
+      setFilmsData(fetchFilmsData);
+    } catch (error) {
+      setFetchFilmsError(error);
+    } finally {
+      setIsFilmsLoading(false);
     }
   };
 
@@ -93,6 +105,7 @@ function Table() {
 
   useEffect(() => {
     fetchData();
+    fetchFilms();
   }, []);
 
   useEffect(() => {
@@ -116,13 +129,7 @@ function Table() {
                 <thead>
                   <tr>
                     <th>
-                      <button
-                        type="button"
-                        className="cell-button"
-                        onClick={ () => orderOnClick('name') }
-                      >
-                        Name
-                      </button>
+                      <button type="button" className="cell-button">Name</button>
                     </th>
                     <th>
                       <button
@@ -152,26 +159,17 @@ function Table() {
                       </button>
                     </th>
                     <th>
-                      <button
-                        type="button"
-                        className="cell-button"
-                      >
+                      <button type="button" className="cell-button">
                         Climate
                       </button>
                     </th>
                     <th>
-                      <button
-                        type="button"
-                        className="cell-button"
-                      >
+                      <button type="button" className="cell-button">
                         Gravity
                       </button>
                     </th>
                     <th>
-                      <button
-                        type="button"
-                        className="cell-button"
-                      >
+                      <button type="button" className="cell-button">
                         Terrain
                       </button>
                     </th>
@@ -218,14 +216,23 @@ function Table() {
                         <td>{ planetInfo.population }</td>
                         <td>
                           {
-                            planetInfo.films.map((filmLink, filmIndex) => (
-                              <p className="film-link" key={ filmIndex }>
-                                {
-                                  filmsData.results
-                                    .find((filmData) => filmData.url === filmLink).title
-                                }
-                              </p>
-                            ))
+                            (fetchError) ? <p>Erro ao carregar os filmes</p>
+                              : (
+                                planetInfo.films.map((filmLink, filmIndex) => (
+                                  <p className="film-link" key={ filmIndex }>
+                                    {
+                                      (isFilmsLoading)
+                                        ? (
+                                          <div className="film-loading" />
+                                        )
+                                        : (
+                                          filmsData.results.find((filmData) => filmData
+                                            .url === filmLink).title
+                                        )
+                                    }
+                                  </p>
+                                ))
+                              )
                           }
                         </td>
                       </tr>
