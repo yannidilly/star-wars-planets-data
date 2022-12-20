@@ -26,8 +26,8 @@
   border-radius: 50%;
   border-top-color: #009579;
   content: '';
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
 }
 
 @keyframes loading {
